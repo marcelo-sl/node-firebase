@@ -1,17 +1,18 @@
 const firebase = require('firebase/app');
 require('firebase/firestore');
 require('firebase/auth');
+require('dotenv').config();
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyD_YBEM2frdUz_xAsMZYHxWpVZEVOzUjK4",
-    authDomain: "my-project-87d52.firebaseapp.com",
-    databaseURL: "https://my-project-87d52.firebaseio.com",
-    projectId: "my-project-87d52",
-    storageBucket: "my-project-87d52.appspot.com",
-    messagingSenderId: "646516140584",
-    appId: "1:646516140584:web:e6442b5ca01f9b841da31d",
-    measurementId: "G-MJ6N98VB2Y"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DB_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
+    appId: project.env.APP_ID,
+    measurementId: process.env.MEASUREMENT_ID
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);

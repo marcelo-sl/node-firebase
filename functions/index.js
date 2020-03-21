@@ -5,10 +5,20 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-exports.getProjects = functions.https.onRequest(async (req, res) => {
-    const projects = await admin.firestore().collection('projects').listDocuments();
+exports.getProjects = functions.https.onRequest((req, res) => {
+    admin.firestore().collection('projects').get()
+      .then(data => {
+
+          let projects = [];
+
+          data.forEach(doc => {
+            projects.push(doc.data());
+          });
+
+          return res.json(projects);
+      })
+      .catch(err => console.log(err));
     
-    return res.json(projects);
 });
 
 exports.addProject = functions.https.onRequest(async (req, res) => {
